@@ -5,6 +5,7 @@ const apikey = `c045ac3f9032a50978e6bd971cfab488`;
 
 weatherForm.addEventListener(`submit`, async (event) => {
   event.preventDefault();
+  document.getElementById("weatherHeading").style.display = "none";
   const city = cityInput.value;
   if (city) {
     try {
@@ -23,7 +24,7 @@ async function getWeatherData(city) {
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`;
   const response = await fetch(apiUrl);
   if (!response.ok) {
-    throw new Error(`Could not fetch wearher data`);
+    throw new Error(`Could not fetch weather data`);
   }
   return await response.json();
 }
@@ -32,6 +33,8 @@ function displayWeatherInfo(data) {
   const {
     name: city,
     main: { temp, humidity },
+    wind: { speed },
+    clouds: { all },
     weather: [{ description, id }],
   } = data;
   card.textContent = ``;
@@ -40,18 +43,24 @@ function displayWeatherInfo(data) {
   const cityDisplay = document.createElement(`h1`);
   const tempDisplay = document.createElement(`p`);
   const humidityDisplay = document.createElement(`p`);
+  const windDisplay = document.createElement(`p`);
+  const cloudDisplay = document.createElement(`p`);
   const descDisplay = document.createElement(`p`);
   const weatherEmoji = document.createElement(`img`);
 
   cityDisplay.textContent = city;
   tempDisplay.textContent = `${(temp - 273.15).toFixed(1)}℃`;
   humidityDisplay.textContent = `Humidity: ${humidity}%`;
+  windDisplay.textContent = `Wind: ${speed}m/s`;
+  cloudDisplay.textContent = `Cloudiness: ${all}%`;
   descDisplay.textContent = description;
   weatherEmoji.src = getWeatherEmoji(id);
 
   card.appendChild(cityDisplay);
   card.appendChild(tempDisplay);
   card.appendChild(humidityDisplay);
+  card.appendChild(windDisplay);
+  card.appendChild(cloudDisplay);
   card.appendChild(descDisplay);
   card.appendChild(weatherEmoji);
 }

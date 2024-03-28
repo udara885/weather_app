@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: monospace;
     background-color: #121212;
     color: #fff; 
     margin: 0;
@@ -36,7 +36,7 @@ body {
 }
 
 .cityInput:focus {
-    border-color: #007bff;
+    border-color: rgba(0, 89, 255, 0.836);
     outline: none;
 }
 
@@ -45,11 +45,12 @@ button {
     font-size: 16px;
     border: none;
     border-radius: 8px;
-    background-color: #007bff;
+    background-color: #333;
     color: white;
     cursor: pointer;
     margin-bottom: 30px;
     transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 0px 8px rgba(0, 89, 255, 0.836);
 }
 
 button:hover {
@@ -63,8 +64,8 @@ button:hover {
 .card {
     background-color: #333; 
     border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    padding: 40px;
+    box-shadow: 8px 8px 8px rgba(0, 89, 255, 0.836);
+    padding: 30px;
     text-align: center; 
     display: flex; 
     flex-direction: column; 
@@ -80,7 +81,7 @@ button:hover {
 
 .card p {
     font-size: 18px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     color: #bbb; 
 }
 
@@ -88,7 +89,7 @@ button:hover {
     max-width: 150px;
     margin: 30px auto;
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 89, 255, 0.836);
 }
 
 .card-details {
@@ -106,4 +107,9 @@ button:hover {
 .card-details i {
     margin-right: 10px;
     color: #007bff;
+}
+
+#weatherHeading{
+    font-size: 80px;
+    text-shadow: 8px 8px 8px rgba(0, 89, 255, 0.836);
 }
